@@ -1,0 +1,6 @@
+<phpunit colors="true" stopOnError="false" verbose="false">
+    <php>
+        <env name="WIRECARD_TOKEN" value=""/>
+        <env name="WIRECARD_KEY" value=""/>
+    </php>
+</phpunit>

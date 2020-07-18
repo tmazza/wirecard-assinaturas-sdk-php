@@ -1,0 +1,27 @@
+{
+    "name": "tmazza/wirecard-subscriptions-sdk",
+    "description": "Software Development Kit to simplify the use of Wirecard Subscriptions API.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tiago Mazzarollo",
+            "email": "tmazza@pm.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "WirecardSubscription\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WirecardSubscription\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
