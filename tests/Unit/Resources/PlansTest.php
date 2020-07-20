@@ -16,7 +16,7 @@ class PlansTest extends ResourceTest
         $this->resource = new Plans($this->requester);
     }
 
-    public function test_activate_should_set_status_activate()
+    public function testActivateShouldSetStatusActivate()
     {
         $code = 'code';
 
@@ -38,7 +38,7 @@ class PlansTest extends ResourceTest
         $this->resource->activate($code);
     }
 
-    public function test_inactivate_should_set_status_inactivate()
+    public function testInactivateShouldSetStatusInactivate()
     {
         $code = 'code';
 

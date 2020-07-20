@@ -34,7 +34,7 @@ class WebhooksTest extends ResourceTest
         ];
     }
 
-    public function test_connect_should_set_webhook()
+    public function testConnectShouldSetWebhook()
     {
         $url = 'https://teste.com';
         $expectedBody = $this->templateCreate($url);
@@ -48,7 +48,7 @@ class WebhooksTest extends ResourceTest
         $this->resource->connect($url);
     }
 
-    public function test_connect_should_use_enableMerchant_param()
+    public function testConnectShouldUseEnableMerchantParam()
     {
         $url = 'https://teste.com';
         $enableMerchant = true;
@@ -64,7 +64,7 @@ class WebhooksTest extends ResourceTest
         $this->resource->connect($url, $enableMerchant, $enableCustomer);
     }
 
-    public function test_connect_should_use_enableCustomer_param()
+    public function testConnectShouldUseEnableCustomerParam()
     {
         $url = 'https://teste.com';
         $enableMerchant = false;
@@ -80,7 +80,7 @@ class WebhooksTest extends ResourceTest
         $this->resource->connect($url, $enableMerchant, $enableCustomer);
     }
 
-    public function test_connect_should_use_both_params()
+    public function testConnectShouldUseBothParams()
     {
         $url = 'https://teste.com';
         $enableMerchant = true;

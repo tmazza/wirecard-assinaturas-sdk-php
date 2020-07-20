@@ -9,16 +9,7 @@ use WirecardSubscription\Response;
 
 class ResponseTest extends TestCase
 {
-    protected function setUp(): void
-    {
-    }
-
-    protected function tearDown():void
-    {
-    }
-
-    
-    public function test_getObject_should_return_object()
+    public function testGetObjectShouldReturnObject()
     {
         $data = ['resource' => ['resourceContent']];
         $response = new Response(200, $data);
@@ -26,7 +17,7 @@ class ResponseTest extends TestCase
         $this->assertSame($data, $response->getObject());
     }
     
-    public function test_getList_should_return_resource_collection()
+    public function testGetListShouldReturnResourceCollection()
     {
         $data = ['resource' => ['resourceContent']];
         $response = new Response(200, $data);
@@ -34,7 +25,7 @@ class ResponseTest extends TestCase
         $this->assertSame($data['resource'], $response->getList());
     }
 
-    public function test_getList_should_return_empty_list()
+    public function testGetListShouldReturnEmptyList()
     {
         $data = ['wrongFormatNoParentToResource' => []];
         $response = new Response(200, $data);
@@ -42,13 +33,13 @@ class ResponseTest extends TestCase
         $this->assertSame([], $response->getList());
     }
     
-    public function test_isOk_should_return_true()
+    public function testIsOkShouldReturnTrue()
     {
         $response = new Response(200, []);
         $this->assertTrue($response->isOk());
     }
     
-    public function test_isOk_should_return_false()
+    public function testIsOkShouldReturnFalse()
     {
         $statusList = [100, 201, 300, 400, 401, 403, 404, 500];
         foreach ($statusList as $status) {
@@ -57,7 +48,7 @@ class ResponseTest extends TestCase
         }
     }
     
-    public function test_isSuccessful_should_return_true()
+    public function testIsSuccessfulShouldReturnTrue()
     {
         $statusList = [200, 201, 202, 203, 250, 299];
         foreach ($statusList as $status) {
@@ -66,7 +57,7 @@ class ResponseTest extends TestCase
         }
     }
     
-    public function test_isSuccessful_should_return_false()
+    public function testIsSuccessfulShouldReturnFalse()
     {
         $statusList = [100, 199, 300, 400, 401, 403, 404, 500];
         foreach ($statusList as $status) {
@@ -75,13 +66,13 @@ class ResponseTest extends TestCase
         }
     }
     
-    public function test_isNotFound_should_return_true()
+    public function testIsNotFoundShouldReturnTrue()
     {
         $response = new Response(404, []);
         $this->assertTrue($response->isNotFound());
     }
 
-    public function test_isNotFound_should_return_false()
+    public function testIsNotFoundShouldReturnFalse()
     {
         $statusList = [100, 200, 201, 300, 400, 401, 403, 500];
         foreach ($statusList as $status) {

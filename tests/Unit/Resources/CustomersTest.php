@@ -17,7 +17,7 @@ class CustomersTest extends ResourceTest
         $this->resource = new Customers($this->requester);
     }
 
-    public function test_enableNewVault_should_set_query_param()
+    public function testEnableNewVaultShouldSetQueryParam()
     {
         $this->requester
             ->expects($this->once())
@@ -27,7 +27,7 @@ class CustomersTest extends ResourceTest
         $this->resource->enableNewVault();
     }
 
-    public function test_setCard_should_set_status_activate()
+    public function testSetCardShouldSetStatusActivate()
     {
         $code = 'code';
         $card = '1234567890123456';

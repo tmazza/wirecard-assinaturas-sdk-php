@@ -18,7 +18,7 @@ class SubscriptionsTest extends ResourceTest
         $this->resource = new Subscriptions($this->requester);
     }
 
-    public function test_enableNewUser_should_set_query_param()
+    public function testEnableNewUserShouldSetQueryParam()
     {
         $this->requester
             ->expects($this->once())
@@ -28,7 +28,7 @@ class SubscriptionsTest extends ResourceTest
         $this->resource->enableNewUser();
     }
 
-    public function test_disableNewUser_should_set_query_param()
+    public function testDisableNewUserShouldSetQueryParam()
     {
         $this->requester
             ->expects($this->once())

@@ -6,7 +6,7 @@ use WirecardSubscription\WirecardApi;
 
 class PlansTest extends BaseTestCase
 {
-    public function test_create_should_save_plan()
+    public function testCreateShouldSavePlan()
     {
         $code = 'test_plan_' . time();
         

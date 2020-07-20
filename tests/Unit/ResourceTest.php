@@ -20,17 +20,17 @@ class ResourceTest extends TestCase
         $this->resource->method('endpoint')->willReturn($this->endpoint);
     }
 
-    protected function tearDown():void
+    protected function tearDown(): void
     {
         $this->resource = null;
     }
 
-    public function test_endpoint_should_be()
+    public function testEndpointShouldBe()
     {
         $this->assertSame($this->resource->endpoint(), $this->endpoint);
     }
     
-    public function test_all_should_call_send_once_with_get()
+    public function testAllShouldCallSendOnceWithGet()
     {
         $response = $this->createMock(Response::class);
         $response->method('getList')->willReturn([]);
@@ -44,7 +44,7 @@ class ResourceTest extends TestCase
         $this->assertSame([], $this->resource->all());
     }
     
-    public function test_get_should_call_send_once_with_get()
+    public function testGetShouldCallSendOnceWithGet()
     {
         $code = 'code';
         $this->requester
@@ -56,7 +56,7 @@ class ResourceTest extends TestCase
         $this->assertSame(null, $this->resource->get($code));
     }
 
-    public function test_create_should_call_send_once_with_post()
+    public function testCreateShouldCallSendOnceWithPost()
     {
         $this->requester
              ->expects($this->once())
@@ -67,7 +67,7 @@ class ResourceTest extends TestCase
         $this->assertSame(null, $this->resource->create([]));
     }
 
-    public function test_create_should_call_response_getObject()
+    public function testCreateShouldCallResponseGetObject()
     {
         $response = $this->createMock(Response::class);
         $response->method('getObject')->willReturn(null);
@@ -79,7 +79,7 @@ class ResourceTest extends TestCase
         $this->assertSame(null, $this->resource->create([]));
     }
 
-    public function test_create_should_retrieve_resource()
+    public function testCreateShouldRetrieveResource()
     {
         $body = ['code' => 'resourceCode'];
 
@@ -95,7 +95,7 @@ class ResourceTest extends TestCase
         $this->assertSame(null, $this->resource->create($body));
     }
 
-    public function test_update_should_accept_only_code()
+    public function testUpdateShouldAcceptOnlyCode()
     {
         $code = 'code';
         $body = ['name' => 'resourceName'];
@@ -113,7 +113,7 @@ class ResourceTest extends TestCase
         $this->assertSame(null, $this->resource->update($code, $body));
     }
 
-    public function test_update_should_call_pull_with_json_attribute()
+    public function testUpdateShouldCallPullWithJsonAttribute()
     {
         $code = 'code';
         $body = ['name' => 'resourceName'];
@@ -132,7 +132,7 @@ class ResourceTest extends TestCase
         $this->assertSame(null, $this->resource->update($code, $body));
     }
 
-    public function test_update_should_use_additional_url()
+    public function testUpdateShouldUseAdditionalUrl()
     {
         $code = 'code';
         $additionalUrl = 'function';

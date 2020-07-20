@@ -21,47 +21,47 @@ class WirecardApiTest extends TestCase
         $this->api = new WirecardApi();
     }
 
-    protected function tearDown():void
+    protected function tearDown(): void
     {
         $this->api = null;
     }
 
-    public function test_should_return_customers_resource()
+    public function testShouldReturnCustomersResource()
     {
         $this->assertInstanceOf(Customers::class, $this->api->customers);
     }
 
-    public function test_should_reuse_customers_object()
+    public function testShouldReuseCustomersObject()
     {
         $this->assertSame($this->api->customers, $this->api->customers);
     }
     
-    public function test_should_return_plans_resource()
+    public function testShouldReturnPlansResource()
     {
         $this->assertInstanceOf(Plans::class, $this->api->plans);
     }
 
-    public function test_should_reuse_plans_object()
+    public function testShouldReusePlansObject()
     {
         $this->assertSame($this->api->plans, $this->api->plans);
     }
     
-    public function test_should_return_subscriptions_resource()
+    public function testShouldReturnSubscriptionsResource()
     {
         $this->assertInstanceOf(Subscriptions::class, $this->api->subscriptions);
     }
 
-    public function test_should_reuse_subscriptions_object()
+    public function testShouldReuseSubscriptionsObject()
     {
         $this->assertSame($this->api->subscriptions, $this->api->subscriptions);
     }
     
-    public function test_should_return_webhooks_resource()
+    public function testShouldReturnWebhooksResource()
     {
         $this->assertInstanceOf(Webhooks::class, $this->api->webhooks);
     }
 
-    public function test_should_reuse_webhooks_object()
+    public function testShouldReuseWebhooksObject()
     {
         $this->assertSame($this->api->webhooks, $this->api->webhooks);
     }
