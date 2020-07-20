@@ -18,6 +18,9 @@
             "WirecardSubscription\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests/Unit"
+    },
     "require": {
         "guzzlehttp/guzzle": "^7.0"
     },
