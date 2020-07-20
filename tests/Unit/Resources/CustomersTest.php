@@ -4,7 +4,6 @@ namespace WirecardSubscription\Tests\Unit\Resources;
 
 use WirecardSubscription\Requester;
 use WirecardSubscription\Resources\Customers;
-use WirecardSubscription\Resources\Plans;
 use WirecardSubscription\Response;
 use WirecardSubscription\Tests\Unit\ResourceTest;
 

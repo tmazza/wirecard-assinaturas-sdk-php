@@ -2,8 +2,6 @@
 
 namespace WirecardSubscription\Tests\Feature;
 
-use WirecardSubscription\WirecardApi;
-
 class PlansTest extends BaseTestCase
 {
     public function testCreateShouldSavePlan()

@@ -3,13 +3,10 @@
 namespace WirecardSubscription\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WirecardSubscription\Requester;
-use WirecardSubscription\Resource;
 use WirecardSubscription\Resources\Customers;
 use WirecardSubscription\Resources\Plans;
 use WirecardSubscription\Resources\Subscriptions;
 use WirecardSubscription\Resources\Webhooks;
-use WirecardSubscription\Response;
 use WirecardSubscription\WirecardApi;
 
 class WirecardApiTest extends TestCase

@@ -3,8 +3,6 @@
 namespace WirecardSubscription\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WirecardSubscription\Requester;
-use WirecardSubscription\Resource;
 use WirecardSubscription\Response;
 
 class ResponseTest extends TestCase
