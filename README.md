@@ -49,12 +49,12 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
 #### ASSINATURAS
 
 - **Planos**
-    - Criar plano
-    - Listar Planos
-    - Consultar Plano
-    - Ativar Plano
-    - Desativar Plano
-    - Alterar Plano
+    - [Criar plano](#criar-plano)
+    - [Listar Planos](#listar-planos)
+    - [Consultar Plano](#consultar-plano)
+    - [Ativar Plano](#ativar-plano)
+    - [Desativar Plano](#desativar-plano)
+    - [Alterar Plano](#alterar-plano)
 
 - **Assinantes**
     - Criar Assinante
@@ -102,9 +102,9 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
 
 
 
-#### Planos
+## Planos
 
-##### Criar plano
+#### Criar plano
 ```php
 <?php
 $plan = $wirecardApi->plans->create([
@@ -130,7 +130,7 @@ $plan = $wirecardApi->plans->create([
 echo $plan->name; // Plano Especial
 ```
 
-##### Listar Planos
+#### Listar Planos
 ```php
 <?php
 $plans = $wirecardApi->plans->all();
@@ -140,28 +140,28 @@ foreach($plans as $plan) {
 }
 ```
 
-##### Consultar Plano
+#### Consultar Plano
 ```php
 <?php
 $plan = $wirecardApi->plans->get('plan101');
 echo $plan->name; // Plano Especial
 ```
 
-##### Ativar Plano
+#### Ativar Plano
 ```php
 <?php
 $plan = $wirecardApi->plans->activate('plan101');
 echo $plan->status; // ACTIVE
 ```
 
-##### Desativar Plano
+#### Desativar Plano
 ```php
 <?php
 $plan = $wirecardApi->plans->inactivate('plan101');
 echo $plan->status; // INACTIVE
 ```
 
-##### Alterar Plano
+#### Alterar Plano
 ```php
 <?php
 $plan = $wirecardApi->plans->update([
