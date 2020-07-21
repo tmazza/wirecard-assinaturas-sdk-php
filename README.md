@@ -46,6 +46,33 @@ Alternativamente o ambiente e as credenciais podem ser definidas na criação da
 
 Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()` além de métodos específicos configurando cada um dos parâmetros disponíveis na API.
 
+### Tratamento de erros
+```php
+try {
+  
+  $wirecardApi = new WirecardApi();
+  $wirecardApi->plans->create(['...']);
+
+} catch (ValidationException $e) {
+
+  // status 400 - reporte de erro da API Wirecard
+  $e->errors(); 
+  $e->alerts();
+  $e->firstError();
+  $e->firstAlert();
+
+} catch (GuzzleHttp\Exception\ClientException $e) {
+  
+  // status 401 a 499  
+
+} catch (GuzzleHttp\Exception\ServerException $e) {
+  
+  // status 500 a 599
+  
+} 
+```
+
+### Recursos
 #### ASSINATURAS
 
 - **Planos**
