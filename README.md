@@ -64,41 +64,41 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
     - [Atualizar Cartão do Assinante](#atualizar-cartão-do-assinante)
 
 - **Assinaturas**
-    - Criar Assinaturas
-    - Listar Todas Assinaturas
-    - Consultar Detalhes de Uma Assinatura
-    - Suspender Assinatura
-    - Reativar Assinatura
-    - Cancelar Assinatura
-    - Alterar Assinatura
-    - Alterar o método de pagamento
+    - [Criar Assinaturas](#criar-assinaturas)
+    - [Listar Todas Assinaturas](#listar-todas-assinaturas)
+    - [Consultar Detalhes de Uma Assinatura](#consultar-detalhes-de-uma-assinatura)
+    - [Suspender Assinatura](#suspender-assinatura)
+    - [Reativar Assinatura](#reativar-assinatura)
+    - [Cancelar Assinatura](#cancelar-assinatura)
+    - [Alterar Assinatura](#alterar-assinatura)
+    - [Alterar o método de pagamento](#alterar-o-método-de-pagamento)
 
 #### PAGAMENTOS
 - **Faturas**
-    - get Listar Todas as Faturas de Uma Assinatura
-    - get Consultar Detalhes de Uma Fatura
+    - Listar Todas as Faturas de Uma Assinatura
+    - Consultar Detalhes de Uma Fatura
 
 - **Pagamentos**
-    - get Listar Todos os Pagamentos de Uma Fatura
-    - get Consultar Detalhes de Um Pagamento da Assinatura
+    - Listar Todos os Pagamentos de Uma Fatura
+    - Consultar Detalhes de Um Pagamento da Assinatura
 
 - **Cupons**
-    - post Criar Cupom
-    - put Associar um Cupom a Assinatura Existente
-    - post Associar um Cupom a uma Nova Assinatura
-    - get Consultar Cupom
-    - get Listar Todos os Cupons
-    - put Ativar e Inativar Cupons
+    - Criar Cupom
+    - Associar um Cupom a Assinatura Existente
+    - Associar um Cupom a uma Nova Assinatura
+    - Consultar Cupom
+    - Listar Todos os Cupons
+    - Ativar e Inativar Cupons
     - delete Excluir Cupom de uma Assinatura
 
 - **Retentativas**
-    - post Retentativa de pagamento de uma fatura
-    - post Gerar um novo boleto para uma fatura
-    - post Criar Regras de Retentativas Automáticas
+    - Retentativa de pagamento de uma fatura
+    - Gerar um novo boleto para uma fatura
+    - Criar Regras de Retentativas Automáticas
     
 #### NOTIFICAÇÕES
 - **Preferências de notificação**
-    - post Criar Preferência de Notificação (webhook)
+    - Criar Preferência de Notificação (webhook)
 
 ## Planos
 
