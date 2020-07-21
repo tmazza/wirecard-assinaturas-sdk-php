@@ -8,22 +8,26 @@ SDK PHP para facilitar o uso da [API de Assinaturas da Wirecard](https://dev.wir
 
 ```php
 <?php
-use tmazza\WirecardSubscriptions\WireacrdApi;
+use tmazza\WirecardSubscriptions\WirecardApi;
 
-$api = new WirecardApi();
+$wirecardApi = new WirecardApi();
 
 
 # Lista de planos
-$api->plans->all(); 
+$plans = $wirecardApi->plans->all();
+
+foreach($plans as $plan) {
+    // $plan->code
+}
 
 # Criação de usuário
-$api->customers->create([ ... ]); 
+$wirecardApi->customers->create([ ... ]); 
 
 # Criação de assinatura
-$api->subscriptions->create([ ... ]); 
+$wirecardApi->subscriptions->create([ ... ]); 
 
 # Consulta de assinatura
-$api->subscriptions->get('code');
+$wirecardApi->subscriptions->get('code');
 
 ```
 
@@ -39,6 +43,8 @@ Alternativamente o ambiente e as credenciais podem ser definidas na criação da
 
 ---
 ## API
+
+Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()` além de métodos específicos configurando cada um dos parâmetros disponíveis na API.
 
 #### ASSINATURAS
 
@@ -93,3 +99,73 @@ Alternativamente o ambiente e as credenciais podem ser definidas na criação da
 #### NOTIFICAÇÕES
 - **Preferências de notificação**
     - post Criar Preferência de Notificação (webhook)
+
+
+
+#### Planos
+
+##### Criar plano
+```php
+<?php
+$plan = $wirecardApi->plans->create([
+  "code" => "plan101",
+  "name" => "Plano Especial",
+  "description" => "Descrição do Plano Especial",
+  "amount" => 990,
+  "setup_fee" => 500,
+  "max_qty" => 1,
+  "interval" => [
+    "length" => 1,
+    "unit" => "MONTH"
+  ],
+  "billing_cycles" => 12,
+  "trial" => [
+    "days" => 30,
+    "enabled" => true,
+    "hold_setup_fee" => true
+  ],
+  "payment_method" => "CREDIT_CARD"
+]);
+
+echo $plan->name; // Plano Especial
+```
+
+##### Listar Planos
+```php
+<?php
+$plans = $wirecardApi->plans->all();
+
+foreach($plans as $plan) {
+    echo $plan->name; // Plano Especial
+}
+```
+
+##### Consultar Plano
+```php
+<?php
+$plan = $wirecardApi->plans->get('plan101');
+echo $plan->name; // Plano Especial
+```
+
+##### Ativar Plano
+```php
+<?php
+$plan = $wirecardApi->plans->activate('plan101');
+echo $plan->status; // ACTIVE
+```
+
+##### Desativar Plano
+```php
+<?php
+$plan = $wirecardApi->plans->inactivate('plan101');
+echo $plan->status; // INACTIVE
+```
+
+##### Alterar Plano
+```php
+<?php
+$plan = $wirecardApi->plans->update([
+    'name' => 'Plano Especial Atualizado',
+]);
+echo $plan->name; // Plano Especial Atualizado
+```
