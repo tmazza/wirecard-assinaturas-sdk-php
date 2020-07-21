@@ -57,11 +57,11 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
     - [Alterar Plano](#alterar-plano)
 
 - **Assinantes**
-    - Criar Assinante
-    - Listar Assinantes
-    - Consultar Assinante
-    - Alterar Assinante
-    - Atualizar Cartão do Assinante
+    - [Criar Assinante](#criar-assinante)
+    - [Listar Assinantes](#listar-assinantes)
+    - [Consultar Assinante](#consultar-assinante)
+    - [Alterar Assinante](#alterar-assinante)
+    - [Atualizar Cartão do Assinante](#atualizar-cartão-do-assinante)
 
 - **Assinaturas**
     - Criar Assinaturas
@@ -99,8 +99,6 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
 #### NOTIFICAÇÕES
 - **Preferências de notificação**
     - post Criar Preferência de Notificação (webhook)
-
-
 
 ## Planos
 
@@ -169,3 +167,143 @@ $plan = $wirecardApi->plans->update([
 ]);
 echo $plan->name; // Plano Especial Atualizado
 ```
+
+
+
+## Assinantes
+
+#### Criar Assinante
+```php
+<?php
+
+// Criar assinante
+$customer = $wirecardApi->customers->create([
+  "code" => "cliente01",
+  "email" => "nome@exemplo.com.br",
+  "fullname" => "Nome Sobrenome",
+  "cpf" => "22222222222",
+  "phone_area_code" => "11",
+  "phone_number" => "934343434",
+  "birthdate_day" => "26",
+  "birthdate_month" => "04",
+  "birthdate_year" => "1980",
+  "address" => [
+    "street" => "Rua Nome da Rua",
+    "number" => "100",
+    "complement" => "Casa",
+    "district" => "Nome do Bairro",
+    "city" => "São Paulo",
+    "state" => "SP",
+    "country" => "BRA",
+    "zipcode" => "05015010"
+  ]
+]);
+
+// Cadastrar o cartão do assinante
+$wirecardApi->customers->setCard(
+    $customer->code,
+    [
+      "holder_name" => "Nome Completo",
+      "number" => "4111111111111111",
+      "expiration_month" => "06",
+      "expiration_year" => "22"
+    ]
+);
+
+// Parâmetro new_vault pode ser habilitado utilizando
+// enableNewVault() ao criar o assinante.
+$customer = $wirecardApi->customers
+    ->enableNewVault()
+    ->create([/*...*/])
+
+// Opcionalmente customer e billing_info podem ser
+// criados em uma única requisição, conforme 
+// documentação da API Wirecard.
+$customer = $wirecardApi->customers->create([
+  "code" => "cliente02",
+  "email" => "nome@exemplo.com.br",
+  "fullname" => "Nome Sobrenome",
+  "cpf" => "22222222222",
+  "phone_area_code" => "11",
+  "phone_number" => "934343434",
+  "birthdate_day" => "26",
+  "birthdate_month" => "04",
+  "birthdate_year" => "1980",
+  "address" => [
+    "street" => "Rua Nome da Rua",
+    "number" => "100",
+    "complement" => "Casa",
+    "district" => "Nome do Bairro",
+    "city" => "São Paulo",
+    "state" => "SP",
+    "country" => "BRA",
+    "zipcode" => "05015010"
+  ],
+  "billing_info" => [
+    "credit_card" => [
+      "holder_name" => "Nome Completo",
+      "number" => "4111111111111111",
+      "expiration_month" => "06",
+      "expiration_year" => "22"
+    ]
+  ]
+]);
+
+echo $customer->code; // cliente02
+```
+
+#### Listar Assinantes
+```php
+<?php
+$customers = $wirecardApi->customers->all();
+
+foreach($customers as $customer) {
+    echo $customer->code; // cliente01
+}
+```
+
+#### Consultar Assinante
+```php
+<?php
+$customer = $wirecardApi->customers->get('client01');
+echo $customer->email; // nome@exemplo.com.br
+```
+
+#### Alterar Assinante
+```php
+<?php
+$customer = $wirecardApi->customers->update([
+    'name' => 'Novo nome',
+]);
+echo $customer->name; // Novo nome 
+```
+
+#### Atualizar Cartão do Assinante
+```php
+<?php
+$customer = $wirecardApi->customers->setCard([
+    "holder_name" => "Nome Completo",
+    "number" => "4222222222222222",
+    "expiration_month" => "06",
+    "expiration_year" => "22"
+]);
+echo $customer->billing_info->credit_card->number; // 4222222222222222
+```
+
+## Assinaturas
+#### Criar Assinaturas
+...
+#### Listar Todas Assinaturas
+...
+#### Consultar Detalhes de Uma Assinatura
+...
+#### Suspender Assinatura
+...
+#### Reativar Assinatura
+...
+#### Cancelar Assinatura
+...
+#### Alterar Assinatura
+...
+#### Alterar o método de pagamento
+...
