@@ -2,6 +2,7 @@
     "name": "tmazza/wirecard-subscriptions-sdk",
     "description": "Software Development Kit to simplify the use of Wirecard Subscriptions API.",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Tiago Mazzarollo",
