@@ -43,7 +43,7 @@ class ValidationException extends Exception
     /**
      * Retorna a primeira mensagem da lista de alertas.
      */
-    public function someAlert()
+    public function firstAlert()
     {
         $errors = $this->alerts();
         if (! $errors) {
