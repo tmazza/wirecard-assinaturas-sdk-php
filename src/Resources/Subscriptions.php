@@ -17,11 +17,4 @@ class Subscriptions extends Resource
 
         return $this;
     }
-
-    public function disableNewUser()
-    {
-        $this->withQuery('new_customer', 'false');
-
-        return $this;
-    }
 }

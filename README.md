@@ -258,7 +258,7 @@ echo $customer->code; // cliente02
 $customers = $wirecardApi->customers->all();
 
 foreach($customers as $customer) {
-    echo $customer->code; // cliente01
+  echo $customer->code; // cliente01
 }
 ```
 
@@ -273,7 +273,7 @@ echo $customer->email; // nome@exemplo.com.br
 ```php
 <?php
 $customer = $wirecardApi->customers->update([
-    'name' => 'Novo nome',
+  'name' => 'Novo nome',
 ]);
 echo $customer->name; // Novo nome 
 ```
@@ -282,21 +282,67 @@ echo $customer->name; // Novo nome
 ```php
 <?php
 $customer = $wirecardApi->customers->setCard([
-    "holder_name" => "Nome Completo",
-    "number" => "4222222222222222",
-    "expiration_month" => "06",
-    "expiration_year" => "22"
+  'holder_name' => 'Nome Completo',
+  'number' => '4222222222222222',
+  'expiration_month' => '06',
+  'expiration_year' => '22'
 ]);
 echo $customer->billing_info->credit_card->number; // 4222222222222222
 ```
 
 ## Assinaturas
 #### Criar Assinaturas
-...
+```php
+<?php
+$subscription = $wirecardApi->subscriptions->create([
+  'code' => 'assinatura01',
+  'amount' => '9990',
+  'payment_method' => 'CREDIT_CARD',
+  'plan'  => [
+    'code'  => 'plano01'
+  ],
+  'customer'  => [
+   'code'  => 'cliente01'
+  ]
+]);
+echo $subscription->code; // assinatura01
+```
+
+Parâmetro `enableNewUser()` disponível caso customer seja informado junto com a criação da assinatura.
+```php
+<?php
+$subscription = $wirecardApi->subscriptions->enableNewUser()->create([
+  'code' => 'assinatura01',
+  'amount' => '9990',
+  'payment_method' => 'CREDIT_CARD',
+  'plan'  => [
+    'code'  => 'plano01'
+  ],
+  'customer'  => [
+   'code'  => 'novoCLiente'
+   // Informações de customer
+  ]
+]);
+echo $subscription->code; // assinatura01
+```
+
 #### Listar Todas Assinaturas
-...
+```php
+<?php
+$subscriptions = $wirecardApi->subscriptions->all();
+
+foreach($subscriptions as $subscription) {
+  echo $subscription->code; // assinatura01
+}
+```
+
 #### Consultar Detalhes de Uma Assinatura
-...
+```php
+<?php
+$subscription = $wirecardApi->subscriptions->get('assinatura01');
+echo $subscription->amount; // 9990
+```
+
 #### Suspender Assinatura
 ...
 #### Reativar Assinatura
