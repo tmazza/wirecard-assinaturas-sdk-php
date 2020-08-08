@@ -67,11 +67,6 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
     - [Criar Assinaturas](#criar-assinaturas)
     - [Listar Todas Assinaturas](#listar-todas-assinaturas)
     - [Consultar Detalhes de Uma Assinatura](#consultar-detalhes-de-uma-assinatura)
-    - [Suspender Assinatura](#suspender-assinatura)
-    - [Reativar Assinatura](#reativar-assinatura)
-    - [Cancelar Assinatura](#cancelar-assinatura)
-    - [Alterar Assinatura](#alterar-assinatura)
-    - [Alterar o método de pagamento](#alterar-o-método-de-pagamento)
 
 #### PAGAMENTOS
 - **Faturas**
@@ -108,7 +103,7 @@ Todos os recursos possuem os métodos `get()`, `all()`, `create()` e  `update()`
 $plan = $wirecardApi->plans->create([
   "code" => "plan101",
   "name" => "Plano Especial",
-  "description" => "Descrição do Plano Especial",
+  "description" => "Descrição",
   "amount" => 990,
   "setup_fee" => 500,
   "max_qty" => 1,
@@ -210,15 +205,12 @@ $wirecardApi->customers->setCard(
     ]
 );
 
-// Parâmetro new_vault pode ser habilitado utilizando
-// enableNewVault() ao criar o assinante.
+// new_vault pode ser habilitado enableNewVault()
 $customer = $wirecardApi->customers
     ->enableNewVault()
     ->create([/*...*/])
 
-// Opcionalmente customer e billing_info podem ser
-// criados em uma única requisição, conforme 
-// documentação da API Wirecard.
+// customer e billing_info criados juntos
 $customer = $wirecardApi->customers->create([
   "code" => "cliente02",
   "email" => "nome@exemplo.com.br",
@@ -342,14 +334,3 @@ foreach($subscriptions as $subscription) {
 $subscription = $wirecardApi->subscriptions->get('assinatura01');
 echo $subscription->amount; // 9990
 ```
-
-#### Suspender Assinatura
-...
-#### Reativar Assinatura
-...
-#### Cancelar Assinatura
-...
-#### Alterar Assinatura
-...
-#### Alterar o método de pagamento
-...
